@@ -17,34 +17,49 @@
   
   /* RoomCategorySection.css */
 
-.table-container {
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-top: 20px; /* Adjust margin as needed */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .table {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .header-row,
+  .row {
+    display: table-row;
+  }
+  
+  .header-cell,
+  .cell {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ddd;
+
+  }
+  
+  .header-cell {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .cell.room-name {
+    font-weight: bold;
+   
+  }
+
+  
+  .cell.title {
+    font-weight: bold;
+    text-align: right; /* Align titles to the right */
+  }
+  
+.text_color{
+  color: blueviolet;
 }
 
-.table {
-  display: table;
-  width: auto;
-  border-collapse: collapse;
-}
-
-.header-row {
-  display: table-row;
-  background-color: #f2f2f2;
-}
-
-.header-cell, .cell {
-  display: table-cell;
-  padding: 10px;
-  border: 1px solid #ddd;
-  min-width: 150px; /* Adjust as needed */
-}
-
-.row {
-  display: table-row;
-}
-
-.cell {
-  display: table-cell;
+.name_width{
+  width: 5px;
 }

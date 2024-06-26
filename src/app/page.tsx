@@ -32,7 +32,7 @@ const MainPage: React.FC = () => {
   };
 
   return (
-    <Container>
+    <div className='container'>
       <Typography variant="h4" my={4}>
         Rate Calendar
       </Typography>
@@ -49,7 +49,7 @@ const MainPage: React.FC = () => {
           <Typography variant="body1" mt={4}>No room categories available</Typography>
         )
       )}
-    </Container>
+    </div>
   );
 };
 

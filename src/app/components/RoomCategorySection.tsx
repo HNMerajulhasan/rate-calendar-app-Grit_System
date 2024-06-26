@@ -70,7 +70,6 @@ interface RoomCategorySectionProps {
 }
 
 const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategories }) => {
-
   const getRoomStatus = (roomInventoryCalender: IRoomInventoryCalender[]): string => {
     if (!roomInventoryCalender || roomInventoryCalender.length === 0) {
       return "Not sellable";
@@ -87,37 +86,77 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
   ))).sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
 
   return (
-    <div className="table-container">
-      <div className="table">
-        <div className="header-row">
-          <div className="header-cell">Room Name</div>
+    <div className="table-container  ">
+      <div className="table ">
+        <div className="row ">
+          <div className="cell room-name ">Room</div>
           {dates.map((date, index) => (
-            <div key={index} className="header-cell">
+            <div key={index} className="header-cell ">
               {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })}
+              
             </div>
           ))}
         </div>
         {roomCategories.map(category => (
-          <div key={category.id} className="row">
-            <div className="cell">{category.name}</div>
-            {dates.map((date, index) => {
-              const ratePlanForDate = category.ratePlans.flatMap(ratePlan => ratePlan.calendar).find(entry => entry.date === date);
-              return (
-                <div key={`${category.id}-${index}`} className="cell">
-                  {ratePlanForDate ? (
-                    <div>
-                      <div>Status: {getRoomStatus(category.roomInventoryCalender)}</div>
-                      <div>Rate: {ratePlanForDate.rate}</div>
-                      <div>Occupancy: {category.occupancy}</div>
-                      <div>Min. stay: {ratePlanForDate.min_length_of_stay}</div>
-                      <div>Res. deadline: {ratePlanForDate.reservation_deadline}</div>
-                    </div>
-                  ) : (
-                    <div>No data</div>
-                  )}
+          <div key={category.id} className='name_width'>
+            <div className="row ">
+              <div className="cell room-name ">{category.name}</div>
+              {dates.map((date, index) => (
+                  <div key={index} className="header-cell ">
+                  {/* {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })} */}
+                  
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            <div className="row">
+              <div className="cell title">Room status</div>
+              {dates.map((date, index) => (
+                <div key={`${category.id}-status-${index}`} className="cell">
+                  {getRoomStatus(category.roomInventoryCalender)}
+                </div>
+              ))}
+            </div>
+            <div className="row">
+              <div className="cell title">Rate</div>
+              {dates.map((date, index) => {
+                const ratePlanForDate = category.ratePlans.flatMap(ratePlan => ratePlan.calendar).find(entry => entry.date === date);
+                return (
+                  <div key={`${category.id}-rate-${index}`} className="cell">
+                    {ratePlanForDate ? ratePlanForDate.rate : 'No data'}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="row">
+              <div className="cell title">Occupancy</div>
+              {dates.map((date, index) => (
+                <div key={`${category.id}-occupancy-${index}`} className="cell">
+                  {category.occupancy}
+                </div>
+              ))}
+            </div>
+            <div className="row">
+              <div className="cell title">Min Stay</div>
+              {dates.map((date, index) => {
+                const ratePlanForDate = category.ratePlans.flatMap(ratePlan => ratePlan.calendar).find(entry => entry.date === date);
+                return (
+                  <div key={`${category.id}-minStay-${index}`} className="cell">
+                    {ratePlanForDate ? ratePlanForDate.min_length_of_stay : 'No data'}
+                  </div>
+                );
+              })}
+            </div>
+            <div className="row">
+              <div className="cell title">Res Deadline</div>
+              {dates.map((date, index) => {
+                const ratePlanForDate = category.ratePlans.flatMap(ratePlan => ratePlan.calendar).find(entry => entry.date === date);
+                return (
+                  <div key={`${category.id}-resDeadline-${index}`} className="cell">
+                    {ratePlanForDate ? ratePlanForDate.reservation_deadline : 'No data'}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         ))}
       </div>
