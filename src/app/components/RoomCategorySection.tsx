@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
 import './RoomCategorySection.css';
 import { IRoomCategory, IRatePlan, IRoomInventoryCalender } from '../types';
+import { FaUser } from 'react-icons/fa'; // Importing a person icon from react-icons
 
 interface RoomCategorySectionProps {
   roomCategories: IRoomCategory[];
 }
 
 const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategories }) => {
+
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const getRoomStatus = (roomInventoryCalender: IRoomInventoryCalender[]): string => {
@@ -55,7 +57,7 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
           <div className="header-cell sticky">Room</div>
           {dates.map((date, index) => (
             <div key={index} className="header-cell">
-              {/* {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })} */}
+              {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })}
             </div>
           ))}
         </div>
@@ -69,33 +71,59 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
                 </div>
               ))}
             </div>
+
             <div className="row">
-              <div className="cell sticky title row_title">Room status</div>
+              <div className="cell sticky title row_title">Room Status</div>
               {dates.map((date, index) => (
                 <div key={`${category.id}-status-${index}`} className="cell">
-                  {getRoomStatus(category.roomInventoryCalender)}
+                  {category.roomStatus}
                 </div>
               ))}
             </div>
+
             <div className="row">
-              <div className="cell sticky title row_title">Rate</div>
-              {dates.map((date, index) => {
-                const ratePlanForDate = category.ratePlans.flatMap(ratePlan => ratePlan.calendar).find(entry => entry.date === date);
-                return (
-                  <div key={`${category.id}-rate-${index}`} className="cell">
-                    {ratePlanForDate ? ratePlanForDate.rate : 'No data'}
-                  </div>
-                );
-              })}
-            </div>
-            <div className="row">
-              <div className="cell sticky title row_title">Occupancy</div>
+              <div className="cell sticky title row_title">Rooms to Sell</div>
               {dates.map((date, index) => (
-                <div key={`${category.id}-occupancy-${index}`} className="cell">
-                  {category.occupancy}
+                <div key={`${category.id}-roomsToSell-${index}`} className="cell">
+                  {category.roomsToSell}
                 </div>
               ))}
             </div>
+
+            <div className="row">
+              <div className="cell sticky title row_title">Net Booked</div>
+              {dates.map((date, index) => (
+                <div key={`${category.id}-netBooked-${index}`} className="cell">
+                  {category.netBooked}
+                </div>
+              ))}
+            </div>
+
+            {category.ratePlans.map(ratePlan => (
+              <div key={ratePlan.id}>
+                <div className="row">
+                  <div className="cell sticky title row_title">{ratePlan.name}
+
+                  <div className="">
+                    <FaUser /> x {category.occupancy}
+                  </div>
+
+                  </div>
+                 
+                  {dates.map((date, index) => {
+                    const ratePlanForDate = ratePlan.calendar.find(entry => entry.date === date);
+                    return (
+                      <div key={`${ratePlan.id}-rate-${index}`} className="cell">
+                        {ratePlanForDate ? ratePlanForDate.rate : 'No data'}
+                      </div>
+                    );
+                  })}
+                   
+                </div>
+             
+              </div>
+            ))}
+
             <div className="row">
               <div className="cell sticky title row_title">Min Stay</div>
               {dates.map((date, index) => {
@@ -126,5 +154,3 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
 };
 
 export default RoomCategorySection;
-
-
