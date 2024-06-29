@@ -22,20 +22,14 @@ const CustomDateRangePicker: React.FC<CustomDateRangePickerProps> = ({ onChange 
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
       <DateRangePicker
-        startText="Start Date"
-        endText="End Date"
         value={value}
         onChange={handleDateChange}
-        renderInput={(startProps, endProps) => (
-          <Box display="flex" alignItems="center">
-            <TextField {...startProps} />
-            <Box mx={2}> to </Box>
-            <TextField {...endProps} />
-          </Box>
-        )}
+     
       />
     </LocalizationProvider>
   );
 };
 
 export default CustomDateRangePicker;
+
+
