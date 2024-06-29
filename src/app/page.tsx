@@ -51,7 +51,7 @@ const MainPage: React.FC = () => {
             <CircularProgress />
           </Box>
         ) : (
-          // Render RoomCategorySection only if roomCategories has data
+      
           roomCategories.length > 0 ? (
             <RoomCategorySection roomCategories={roomCategories} />
           ) : (

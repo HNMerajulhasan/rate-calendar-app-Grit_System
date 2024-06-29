@@ -112,18 +112,18 @@
   /* Media query for mobile responsiveness */
   @media only screen and (min-width: 350px) and (max-width: 1000px) {
     .table-container {
-      overflow-x: auto; /* Allow horizontal scrolling */
+      overflow-x: auto; 
     }
   
     .table {
-      width: 100%; /* Make the table take up the full width */
+      width: 100%;
       border-collapse: collapse;
     }
   
     .header-cell,
     .cell {
-      padding: 4px; /* Reduce padding for smaller screens */
-      font-size: 14px; /* Adjust font size */
+      padding: 4px; 
+      font-size: 14px; 
     }
   
     .header-cell:not(:first-child),

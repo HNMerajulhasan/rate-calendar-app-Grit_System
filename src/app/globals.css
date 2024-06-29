@@ -30,13 +30,13 @@ code {
 
 
 .header_date_picker_sticky {
-  position: -webkit-sticky; /* For Safari */
+  position: -webkit-sticky; 
   position: sticky !important;
   top: 0px;;
-  z-index: 1000; /* Ensure it is above other content */
-  background-color: white; /* Ensure the background is white, or match your app's background */
-  padding-top: 10px; /* Optional: add some padding for better appearance */
-  border-bottom: 1px solid #ccc; /* Optional: add a bottom border for separation */
+  z-index: 1000;
+  background-color: white;
+  padding-top: 10px;
+  border-bottom: 1px solid #ccc; 
 }
 
 .date_picker{
