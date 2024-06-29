@@ -5,6 +5,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
@@ -13,4 +14,96 @@ code {
 
 .container{
   padding-inline: 80px;
+
+}
+
+.header_design{
+  background-color:cornflowerblue;
+  padding: 15px;
+  border-radius: 3px;
+}
+
+.main_body{
+  margin-top: 20px;
+ 
+}
+
+
+.header_date_picker_sticky {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky !important;
+  top: 0px;;
+  z-index: 1000; /* Ensure it is above other content */
+  background-color: white; /* Ensure the background is white, or match your app's background */
+  padding-top: 10px; /* Optional: add some padding for better appearance */
+  border-bottom: 1px solid #ccc; /* Optional: add a bottom border for separation */
+}
+
+.date_picker{
+  padding-top: 14px;
+}
+
+.img_design{
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
+.imgDesign{
+  width:1000px;
+  height:fit-content;
+  justify-content: center;
+}
+
+.logo_design{
+  width: 70px;
+  height: 70px;
+}
+
+.navbar_design{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.my_image{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.footer{
+  background-color: cadetblue;
+
+}
+
+
+@media only screen and (min-width: 350px) and (max-width: 1000px) {
+  .header_design{
+    background-color:cornflowerblue;
+    padding: 2px;
+    border-radius: 3px;
+  }
+  .container{
+    padding-inline: 10px;
+  }
+  .logo_design{
+    width: 50px;
+    height: 50px;
+  }
+  .my_image{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  .img_design{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+  }
+  
+  .imgDesign{
+    width:500px;
+    height:fit-content;
+    justify-content: center;
+  }
 }

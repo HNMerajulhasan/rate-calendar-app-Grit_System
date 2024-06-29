@@ -9,6 +9,8 @@ interface RoomCategorySectionProps {
 
 const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategories }) => {
 
+  console.log('roomCategories',roomCategories)
+
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   const getRoomStatus = (roomInventoryCalender: IRoomInventoryCalender[]): string => {
@@ -54,15 +56,15 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
     >
       <div className="table">
         <div className="header-row">
-          <div className="header-cell sticky">Room</div>
+          {/* <div className="header-cell sticky">Below is your Search Result</div> */}
           {dates.map((date, index) => (
             <div key={index} className="header-cell">
-              {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })}
+              {/* {new Date(date).toLocaleDateString(undefined, { weekday: 'short', day: 'numeric' })} */}
             </div>
           ))}
         </div>
         {roomCategories.map(category => (
-          <div key={category.id}>
+          <div key={category.id} className='full_cell'>
             <div className="row">
               <div className="cell sticky room-name room_row_color">{category.name}</div>
               {dates.map((date, index) => (
@@ -75,7 +77,7 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
             <div className="row">
               <div className="cell sticky title row_title">Room Status</div>
               {dates.map((date, index) => (
-                <div key={`${category.id}-status-${index}`} className="cell">
+                <div key={`${category.id}-status-${index}`} className="cell roomStatus_design">
                   {category.roomStatus}
                 </div>
               ))}
@@ -104,7 +106,7 @@ const RoomCategorySection: React.FC<RoomCategorySectionProps> = ({ roomCategorie
                 <div className="row">
                   <div className="cell sticky title row_title">{ratePlan.name}
 
-                  <div className="">
+                  <div className="user_design">
                     <FaUser /> x {category.occupancy}
                   </div>
 
